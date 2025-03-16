@@ -4,6 +4,31 @@
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script>
+		  // 添加全局监听器来捕获强制重渲染事件
+		  window.addEventListener('force-rerender', (event) => {
+		    console.log('收到强制重渲染事件:', event.detail);
+		  });
+		  
+		  // 添加WebGL上下文丢失监听器
+		  window.addEventListener('webglcontextlost', (event) => {
+		    console.error('WebGL上下文丢失:', event);
+		    event.preventDefault();
+		    
+		    // 尝试恢复
+		    setTimeout(() => {
+		      const canvas = event.target;
+		      if (canvas && typeof canvas.getContext === 'function') {
+		        try {
+		          const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+		          console.log('尝试恢复WebGL上下文:', gl ? '成功' : '失败');
+		        } catch (e) {
+		          console.error('恢复WebGL上下文失败:', e);
+		        }
+		      }
+		    }, 500);
+		  });
+		</script>
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">

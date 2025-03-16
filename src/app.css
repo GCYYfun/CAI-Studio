@@ -1,3 +1,111 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
+
+/* 全局样式文件 */
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap'); */
+
+:root {
+  --background-color: #0a192f;
+  --text-color: #e6f1ff;
+  --accent-color: #64ffda;
+  --secondary-background: #112240;
+}
+
+/* 基础重置 */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0a192f;
+  color: #e6f1ff;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+button {
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+}
+
+/* 文字选择效果 */
+::selection {
+  background-color: rgba(100, 255, 218, 0.3);
+  color: var(--text-color);
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(100, 255, 218, 0.8);
+}
+
+/* 确保canvas元素正确显示 */
+canvas {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* 确保3D容器不受干扰 */
+.hero-container, .canvas-container, .canvas-wrapper {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+/* 防止意外隐藏，特别是对hero部分 */
+#hero, .hero-section {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+/* 解决可能的z-index问题 */
+nav, header, footer {
+  position: relative;
+  z-index: 10;
+}
