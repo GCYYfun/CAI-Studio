@@ -2,6 +2,30 @@
 
 Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
 
+## Install Dev Tool
+
+Install node manager - fnm
+
+```bash
+curl -fsSL https://fnm.vercel.app/install | bash
+```
+
+Install node - node 
+```bash
+fnm install --latest  # Install latest version
+```
+
+[Optional] Install node package manager - pnpm
+```bash
+curl -fsSL https://get.pnpm.io/install.sh | sh -
+```
+
+Ref  
+- [fnm](https://github.com/Schniz/fnm)  
+- [pnpm](https://pnpm.io/installation)  
+
+
+
 ## Creating a project
 
 If you're seeing this, you've probably already done this step. Congrats!

@@ -37,7 +37,7 @@
   <div class="container">
     {#each Array(6) as _, i}
       <div class="project-card" class:visible={isVisible[i]}>
-        <div class="project-image" style="background-image: url('/images/project{(i % 3) + 1}.jpg')"></div>
+        <div class="project-image" style="background-image: url('/images/project{(i % 3) + 1}.svg')"></div>
         <div class="project-content">
           <h2>项目名称 {i + 1}</h2>
           <p>这是项目{i + 1}的简短描述，介绍游戏的核心玩法和亮点特色。</p>
@@ -57,7 +57,7 @@
   .projects-hero {
     height: 50vh;
     background: linear-gradient(to bottom, rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.95)),
-                url('/images/project1.jpg') center/cover no-repeat;
+                url('/images/project1.svg') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;

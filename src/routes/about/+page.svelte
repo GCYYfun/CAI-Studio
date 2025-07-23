@@ -1,17 +1,22 @@
 <script>
   import { onMount } from 'svelte';
+  import Button from '$lib/components/ui/Button.svelte';
+  import { ROUTES } from '$lib/utils/constants';
   
   let isVisible = {
     story: false,
-    team: false,
-    values: false
+    purpose: false,
+    contact: false
   };
   
   onMount(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          isVisible[entry.target.id] = true;
+          const sectionId = entry.target.id;
+          if (sectionId && sectionId in isVisible) {
+            isVisible[sectionId] = true;
+          }
         }
       });
     }, { threshold: 0.1 });
@@ -22,82 +27,86 @@
     
     return () => observer.disconnect();
   });
-  
-  // 团队成员数据
-  const teamMembers = [
-    { name: '张三', role: '创始人兼首席设计师', image: '/images/team1.jpg' },
-    { name: '李四', role: '技术总监', image: '/images/team2.jpg' },
-    { name: '王五', role: '艺术总监', image: '/images/team3.jpg' },
-    { name: '赵六', role: '资深程序员', image: '/images/team4.jpg' }
-  ];
 </script>
 
 <svelte:head>
   <title>关于我们 | CAI Game Studio</title>
-  <meta name="description" content="了解CAI Game Studio的团队和使命" />
+  <meta name="description" content="了解CAI Game Studio的团队背景和游戏开发理念" />
 </svelte:head>
 
 <section class="about-hero">
   <div class="container">
     <h1>关于 CAI Game Studio</h1>
-    <p>热爱游戏，创新未来</p>
+    <p>用创新技术打造独特游戏体验</p>
   </div>
 </section>
 
 <section class="section" id="story" class:visible={isVisible.story}>
   <div class="container">
-    <h2>我们的故事</h2>
+    <h2>我们的团队</h2>
     <div class="story-content">
-      <div class="story-image">
-        <img src="/images/studio.jpg" alt="CAI Game Studio工作室" />
-      </div>
       <div class="story-text">
-        <p>CAI Game Studio 成立于2020年，是一家由热爱游戏的创作者组成的独立游戏工作室。</p>
-        <p>我们的创始团队在大型游戏公司工作多年，积累了丰富的游戏开发经验。怀着对创新游戏体验的热情，我们决定成立自己的工作室，将我们对游戏的理解和创意付诸实践。</p>
-        <p>从最初的几个人到现在的精英团队，我们始终保持对品质的坚持和对玩家体验的专注，致力于打造令人难忘的游戏世界。</p>
+        <p>CAI Game Studio 是一支年轻而充满激情的独立游戏开发团队。我们的成员来自不同的技术背景，包括前端开发、游戏引擎、3D建模和用户体验设计等领域。</p>
+        
+        <p>虽然我们每个人的专业方向不同，但我们都有一个共同的信念：游戏不仅仅是娱乐产品，更是一种能够传达情感、启发思考和连接人心的艺术形式。</p>
+        
+        <p>我们相信技术与创意的结合能够创造出令人难忘的互动体验，让玩家在虚拟世界中感受到真实的情感共鸣。</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section values-section" id="values" class:visible={isVisible.values}>
+<section class="section purpose-section" id="purpose" class:visible={isVisible.purpose}>
   <div class="container">
-    <h2>我们的价值观</h2>
-    <div class="values-grid">
-      <div class="value-card">
-        <h3>创新</h3>
-        <p>突破常规，探索未知的游戏机制和体验</p>
+    <h2>我们的目标</h2>
+    <div class="purpose-grid">
+      <div class="purpose-card">
+        <div class="purpose-icon">🎮</div>
+        <h3>探索新的游戏体验</h3>
+        <p>我们致力于探索游戏设计的边界，创造前所未有的交互方式和沉浸式体验。</p>
       </div>
       
-      <div class="value-card">
-        <h3>品质</h3>
-        <p>注重细节，打造精致完善的游戏体验</p>
+      <div class="purpose-card">
+        <div class="purpose-icon">🚀</div>
+        <h3>推动技术创新</h3>
+        <p>运用最新的技术栈和开发工具，将创意想法转化为现实，推动游戏行业的技术进步。</p>
       </div>
       
-      <div class="value-card">
-        <h3>玩家至上</h3>
-        <p>倾听社区声音，为玩家创造价值</p>
-      </div>
-      
-      <div class="value-card">
-        <h3>团队协作</h3>
-        <p>鼓励开放交流，共同成长</p>
+      <div class="purpose-card">
+        <div class="purpose-icon">🤝</div>
+        <h3>连接全球玩家</h3>
+        <p>打造能够跨越文化和语言障碍的游戏，让全世界的玩家都能享受到优质的游戏体验。</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section" id="team" class:visible={isVisible.team}>
+<section class="section" id="contact" class:visible={isVisible.contact}>
   <div class="container">
-    <h2>核心团队</h2>
-    <div class="team-grid">
-      {#each teamMembers as member}
-        <div class="team-member">
-          <div class="member-image" style="background-image: url('{member.image}')"></div>
-          <h3>{member.name}</h3>
-          <p>{member.role}</p>
-        </div>
-      {/each}
+    <div class="contact-content">
+      <h2>欢迎交流</h2>
+      <p>我们热忱欢迎对游戏开发、技术创新或合作机会感兴趣的朋友与我们交流。无论您是:</p>
+      
+      <ul class="welcome-list">
+        <li>对我们的项目感兴趣的玩家</li>
+        <li>希望探讨技术问题的开发者</li>
+        <li>寻求合作机会的伙伴</li>
+        <li>想要了解游戏开发的学习者</li>
+      </ul>
+      
+      <p>我们都非常期待与您的交流。让我们一起探索游戏世界的无限可能！</p>
+      
+      <div class="contact-actions">
+        <Button
+          text="查看项目"
+          variant="primary"
+          size="large"
+          href={ROUTES.PROJECTS}
+        />
+        <a href="mailto:info@caistudio.com" class="contact-email">
+          📧 info@caistudio.com
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -106,7 +115,7 @@
   .about-hero {
     height: 50vh;
     background: linear-gradient(to bottom, rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.95)),
-                url('/images/team-bg.jpg') center/cover no-repeat;
+                url('/images/placeholder.svg') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -150,90 +159,171 @@
   }
   
   .story-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
   }
   
-  .story-image img {
-    width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  .story-text {
+    text-align: center;
   }
   
   .story-text p {
     margin-bottom: 1.5rem;
     font-size: 1.1rem;
     line-height: 1.7;
+    color: var(--text-secondary);
   }
   
-  .values-section {
+  .purpose-section {
     background: linear-gradient(to bottom, #112240, #0a192f);
   }
   
-  .values-grid {
+  .purpose-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
   }
   
-  .value-card {
+  .purpose-card {
     background: rgba(16, 33, 65, 0.8);
-    padding: 2rem;
-    border-radius: 8px;
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
     text-align: center;
     border: 1px solid rgba(100, 255, 218, 0.2);
-    transition: transform 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   
-  .value-card:hover {
-    transform: translateY(-5px);
+  .purpose-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   }
   
-  .value-card h3 {
+  .purpose-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .purpose-card h3 {
     color: var(--accent-color);
     margin-bottom: 1rem;
     font-size: 1.5rem;
   }
   
-  .team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 3rem;
+  .purpose-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
   }
   
-  .team-member {
+  .contact-content {
+    max-width: 800px;
+    margin: 0 auto;
     text-align: center;
   }
   
-  .member-image {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    margin: 0 auto 1.5rem;
-    background-size: cover;
-    background-position: center;
-    border: 3px solid var(--accent-color);
+  .contact-content p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
   }
   
-  .team-member h3 {
-    margin-bottom: 0.5rem;
-    font-size: 1.5rem;
+  .welcome-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    text-align: left;
   }
   
-  .team-member p {
+  .welcome-list li {
+    background: rgba(100, 255, 218, 0.1);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    border-left: 3px solid var(--accent-color);
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+  
+  .contact-actions {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  
+  .contact-email {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: rgba(100, 255, 218, 0.1);
     color: var(--accent-color);
-    opacity: 0.8;
+    text-decoration: none;
+    border-radius: 6px;
+    border: 2px solid rgba(100, 255, 218, 0.3);
+    font-weight: 600;
+    font-size: 1.125rem;
+    transition: all 0.3s ease;
+  }
+  
+  .contact-email:hover {
+    background: rgba(100, 255, 218, 0.2);
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(100, 255, 218, 0.3);
   }
   
   @media (max-width: 768px) {
-    .story-content {
-      grid-template-columns: 1fr;
-    }
-    
     .about-hero h1 {
       font-size: 2.5rem;
+    }
+    
+    .about-hero p {
+      font-size: 1.25rem;
+    }
+    
+    .purpose-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    
+    .welcome-list {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    
+    .contact-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .contact-actions :global(.btn) {
+      width: 100%;
+      max-width: 300px;
+    }
+    
+    .contact-email {
+      width: 100%;
+      max-width: 300px;
+      justify-content: center;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+      padding: 0 1rem;
+    }
+    
+    .section {
+      padding: 3rem 0;
+    }
+    
+    .purpose-card {
+      padding: 2rem 1.5rem;
     }
   }
 </style>
