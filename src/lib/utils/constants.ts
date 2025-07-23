@@ -93,15 +93,15 @@ export const ANIMATIONS = {
 /** 3D场景默认配置 */
 export const SCENE_3D_CONFIG = {
   /** 粒子数量 */
-  particleCount: 20,
+  particleCount: 40,
   /** 相机位置 */
-  cameraPosition: [0, 0, 15] as [number, number, number],
+  cameraPosition: [0, 0, 20] as [number, number, number],
   /** 视野角度 */
-  fov: 50,
+  fov: 60,
   /** 自动旋转速度 */
-  autoRotateSpeed: 0.5,
+  autoRotateSpeed: 1.0,
   /** 旋转速度 */
-  rotationSpeed: 0.1,
+  rotationSpeed: 0.2,
 } as const;
 
 /** 表单验证规则 */
