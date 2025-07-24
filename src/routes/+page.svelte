@@ -47,10 +47,10 @@
   /** 精选项目数据 */
   const featuredProjects: Project[] = [
     {
-      id: 'Lingyun Yuanjing',
+      id: 'LingyunYuanjing',
       name: '灵韵元境',
       description: '探索一个硅基生命与玩家共同生存的世界。世界时刻都在NPC的活动下发展，玩家在其中自由书写自己的故事，体验无限的可能性。',
-      image: '/images/project1.svg',
+      image: '/images/waiting.svg',
       tags: ['奇幻', 'RPG', '生存', '探索', '建造', "经营", "AI"],
       status: 'developing',
       releaseDate: '未发布'

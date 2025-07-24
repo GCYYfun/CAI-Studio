@@ -36,11 +36,11 @@
   
   // 项目数据 - 实际项目中应该从API或数据库获取
   const projectData: Record<string, ProjectDetail> = {
-    'Lingyun Yuanjing': {
-      id: 'Lingyun Yuanjing',
+    'LingyunYuanjing': {
+      id: 'LingyunYuanjing',
       name: '灵韵元境',
       description: '探索一个硅基生命与玩家共同生存的世界。世界时刻都在NPC的活动下发展，玩家在其中自由书写自己的故事，体验无限的可能性。',
-      image: '/images/project1.svg',
+      image: '/images/waiting.svg',
       tags: ['奇幻', 'RPG', '生存', '探索', '建造', "经营", "AI"],
       status: 'developing',
       releaseDate: '未发布',
@@ -60,27 +60,27 @@
       ],
       screenshots: [
         '/images/project1.svg',
-        '/images/project1.svg',
-        '/images/project1.svg'
+        '/images/project2.svg',
+        '/images/project3.svg'
       ],
       videos: [
         {
           title: '灵韵元境 - 做饭',
           platform: 'bilibili',
           url: 'https://www.bilibili.com/video/BV1cDg3z5ELq',
-          thumbnail: '/images/project1.svg'
+          thumbnail: '/images/waiting.svg'
         },
         {
           title: '灵韵元境 - 种地',
           platform: 'bilibili',
           url: 'https://www.bilibili.com/video/BV1PV32znEmP',
-          thumbnail: '/images/project1.svg'
+          thumbnail: '/images/waiting.svg'
         },
         {
           title: '灵韵元境 - 任务规划',
           platform: 'bilibili',
           url: 'https://www.bilibili.com/video/BV1543HzeE9r',
-          thumbnail: '/images/project1.svg'
+          thumbnail: '/images/waiting.svg'
         }
       ],
       technicalSpecs: {
